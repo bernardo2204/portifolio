@@ -1,0 +1,342 @@
+/* ===== variáveis de cor =====
+   só as sete cores combinadas, nada de inventar tom novo. */
+:root{
+  --bg: #e9eef3;
+  --bg-alt: #ffffff;
+  --ink: #12203a;
+  --ink-soft: #5b6b7d;
+  --nav: #14202e;
+  --azul: #3f77b3;
+  --amarelo: #ffd24a;
+  --contorno: #5b6b7d;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, .rotulo, nav a, .botao{
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+p{ max-width: 62ch; color: var(--ink-soft); }
+
+a{ color: var(--azul); }
+
+/* foco visível sempre — teclado precisa enxergar onde está */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible{
+  outline: 3px solid var(--amarelo);
+  outline-offset: 3px;
+}
+
+img{ max-width: 100%; display: block; }
+
+.envolucro{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== topo ===== */
+header.topo{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--nav);
+  color: #ffffff;
+}
+
+.barra-topo{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.marca{
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: .02em;
+}
+
+nav.menu ul{
+  list-style: none;
+  display: flex;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+}
+
+nav.menu a{
+  color: #e9eef3;
+  text-decoration: none;
+  font-size: .95rem;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+nav.menu a:hover{ border-bottom-color: var(--amarelo); }
+
+.controles-topo{ display: flex; align-items: center; gap: 14px; }
+
+/* botão hamburguer — só aparece em telas estreitas */
+#botao-menu{
+  display: none;
+  background: transparent;
+  border: 1px solid #5b6b7d;
+  width: 40px;
+  height: 36px;
+  cursor: pointer;
+  position: relative;
+}
+
+#botao-menu span,
+#botao-menu::before,
+#botao-menu::after{
+  content: "";
+  position: absolute;
+  left: 9px;
+  right: 9px;
+  height: 2px;
+  background: #ffffff;
+}
+#botao-menu::before{ top: 12px; }
+#botao-menu span{ top: 17px; }
+#botao-menu::after{ top: 22px; }
+
+/* ===== hero ===== */
+.hero{
+  background: var(--nav);
+  color: #ffffff;
+  border-bottom: 4px solid var(--amarelo);
+}
+
+.hero .envolucro{
+  padding: 64px 24px 72px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  align-items: end;
+}
+
+.hero h1{
+  font-size: clamp(2rem, 5vw, 2.9rem);
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: #ffffff;
+}
+
+.hero .funcao{
+  color: var(--amarelo);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  margin: 0 0 18px;
+}
+
+.hero p{
+  color: #cfd9e4;
+  max-width: 52ch;
+}
+
+/* moldura: retângulo amarelo deslocado atrás da foto, no lugar do avatar quadrado genérico */
+.moldura-foto{
+  position: relative;
+  justify-self: center;
+  max-width: 230px;
+  width: 100%;
+}
+
+.moldura-foto::before{
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: 100%;
+  height: 100%;
+  background: var(--amarelo);
+  z-index: 0;
+}
+
+.retrato{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  /* foto é um retrato alto (rosto perto do topo) — ancora o corte lá em cima pra não cortar queixo nem topo da cabeça */
+  object-position: 50% 12%;
+  border: 1px solid var(--nav);
+  display: block;
+}
+
+/* ===== seções gerais ===== */
+section{ padding: 64px 0; }
+
+section.clara{ background: var(--bg); }
+section.branca{ background: var(--bg-alt); }
+
+section h2{
+  font-size: 1.6rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* marcador ao lado do título, tipo indicador de linha ativa num editor de código —
+   troca o clichê de risquinho embaixo do título por algo que combina com o tema técnico */
+.cabecalho-secao{
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin: 0 0 32px;
+}
+
+.marcador{
+  width: 5px;
+  background: var(--amarelo);
+  flex-shrink: 0;
+}
+
+/* ===== habilidades: lista corrida com tracinho amarelo, não chip de SaaS ===== */
+.lista-habilidades{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 620px;
+}
+
+.lista-habilidades li{
+  position: relative;
+  padding-left: 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .95rem;
+  color: var(--ink);
+}
+
+.lista-habilidades li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .6em;
+  width: 10px;
+  height: 2px;
+  background: var(--amarelo);
+}
+
+/* ===== projetos ===== */
+.grade-projetos{
+  display: grid;
+  gap: 2px;
+  background: var(--contorno);
+  border: 1px solid var(--contorno);
+}
+
+.projeto{
+  background: var(--bg-alt);
+  padding: 26px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: start;
+}
+
+.projeto h3{
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.projeto p{ margin: 0 0 12px; font-size: .96rem; }
+
+.projeto .tecnologias{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .82rem;
+  color: var(--azul);
+}
+
+.projeto .abrir{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .9rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--amarelo);
+  white-space: nowrap;
+  align-self: center;
+}
+
+.projeto .abrir:hover{ color: var(--azul); }
+
+/* ===== contato ===== */
+.lista-contato{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lista-contato a{
+  display: inline-block;
+  padding: 10px 0;
+  font-family: 'Space Grotesk', sans-serif;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--contorno);
+  max-width: 320px;
+}
+
+.lista-contato a:hover{ color: var(--azul); border-color: var(--azul); }
+
+footer{
+  background: var(--nav);
+  color: #a9b7c6;
+  padding: 28px 0;
+  font-size: .85rem;
+}
+
+/* ===== responsivo a partir de 360px ===== */
+@media (max-width: 760px){
+  .hero .envolucro{ grid-template-columns: 1fr; padding-top: 40px; }
+  .moldura-foto{ max-width: 170px; order: -1; margin-bottom: 8px; }
+
+  nav.menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--nav);
+    border-top: 1px solid #3f77b3;
+    display: none;
+  }
+  nav.menu.aberto{ display: block; }
+  nav.menu ul{ flex-direction: column; gap: 0; padding: 8px 24px 16px; }
+  nav.menu a{ display: block; padding: 12px 0; }
+
+  #botao-menu{ display: block; }
+
+  .projeto{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 400px){
+  .envolucro{ padding: 0 16px; }
+  .hero .envolucro{ padding-left: 16px; padding-right: 16px; }
+}
