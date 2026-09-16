@@ -213,6 +213,14 @@ section h2{
 }
 
 /* ===== habilidades: lista corrida com tracinho amarelo, não chip de SaaS ===== */
+.grupo-habilidades + .grupo-habilidades{ margin-top: 36px; }
+
+.grupo-habilidades h3{
+  font-size: 1rem;
+  color: var(--azul);
+  margin: 0 0 16px;
+}
+
 .lista-habilidades{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
