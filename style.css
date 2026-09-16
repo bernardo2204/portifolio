@@ -306,13 +306,6 @@ section h2{
 
 .lista-contato a:hover{ color: var(--azul); border-color: var(--azul); }
 
-footer{
-  background: var(--nav);
-  color: #a9b7c6;
-  padding: 28px 0;
-  font-size: .85rem;
-}
-
 /* ===== responsivo a partir de 360px ===== */
 @media (max-width: 760px){
   .hero .envolucro{ grid-template-columns: 1fr; padding-top: 40px; }
